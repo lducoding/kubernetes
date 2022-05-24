@@ -1,6 +1,6 @@
 # 쿠버네티스 정리
 ## pod
-pod 생성 방법 kubectl, yaml
+pod 생성 방법 kubectl, yaml \n
 resource 설정
 multi pod 생성
 pod의 liveness
