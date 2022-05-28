@@ -6,15 +6,25 @@ metadata:
     app: guestbook
     tier: frontend
 spec:
-  # 케이스에 따라 레플리카를 수정한다.
   replicas: 3
   selector:
+  # matchlabels로 labels의 정보를 찾는다.
     matchLabels:
       tier: frontend
+  # matchExpressions 연산자를 통해 labels의 조건을 찾는다.
+    matchExpressions:
+    - {key: ver, operator: In, values: [mk1]}
+  # matchExpressions의 종류
+# - In : key와 values를 지정하여 key,value가 일치하는 pod만 연결
+# - NotIn : key는 일치하고 value는 일치하지 않는 pod에 연결
+# - Exists : key에 맞는 label의 pod를 연결
+# - DoesNotExist : key와 다른 label의 pod를 연결
+# ex) - {key: tier, operator: In, values: [cache,coco(value 값 여러개도 가능)]}
   template:
     metadata:
       labels:
         tier: frontend
+        ver: mk1
     spec:
       containers:
       - name: php-redis

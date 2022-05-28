@@ -1,5 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
+# replicaSet을 제어하는 부모 역할
+# replicaSet pod 수 조절
+# rolling update & rolling back 기능을 수행할 수 있다.
 metadata:
   name: deploy-nginx
 spec:
@@ -16,3 +19,11 @@ spec:
       containers:
       - name: nginx-container
         image: nginx:1.14
+#         버전 업그레이드 예시
+# kubectl set image deployment app-deploy(deployment이름) web=nginx:1.15 --record(기록중)
+# --record 기록한거 보기 
+# kubectl rollout history deployment app-deploy(deployment이름)
+# 버전 업데이트 중단하기
+# kubectl rollout pause deployment app-deploy(deployment이름)
+# 업데이트 중단 다시 실행
+# kubectl rollout resume deployment app-deploy(deployment이름)

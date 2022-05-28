@@ -4,6 +4,7 @@ metadata:
   name: rc-nginx
 spec:
   replicas: 3
+# replicas에 정의된 갯수만큼 pod수를 보장한다
   selector:
     app: webui
   template:

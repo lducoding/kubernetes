@@ -16,5 +16,7 @@ spec:
         - "-c"
         - "echo 'Hello World'; sleep 25; echo 'Bye'"
       restartPolicy: Never
+# never조건은 실패시 container를 다시 동작시킴
 #      restartPolicy: OnFailure
+# onfailure의 경우 실패시 container를 다시 동작시킴
 #  backoffLimit: 3
